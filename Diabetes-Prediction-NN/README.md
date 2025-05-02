@@ -2,7 +2,6 @@
 
 # Diabetes Prediction with Neural Networks
 
-* **One Sentence Summary**  
 This repository contains a machine learning pipeline that uses a feedforward neural network and SMOTE to predict whether a patient is diabetic, based on a clinical dataset from the Kaggle challenge: [Diabetes Prediction with NN](https://www.kaggle.com/competitions/diabetes-prediction-with-nn).
 
 ---
