@@ -27,6 +27,14 @@ The dataset consists of approximately 25,000 patient records and includes 8 inpu
 | `blood_glucose_level`  | Measured blood glucose level (numeric)  |
 | `diabetes`             | Target label (0 = non-diabetic, 1 = diabetic) |
 
+
+Below is a visualization showing the distribution of the target variable and key features, which highlights the class imbalance (~8.5% diabetic cases) and some early trends in predictors:
+
+![HbA1c_level](https://github.com/user-attachments/assets/7dba7837-c5fd-43e7-9ccf-96d86dd58a5a)
+
+![glucoselevel](https://github.com/user-attachments/assets/b8c3b6f0-5fdd-4448-a5c3-d6ac08711b8f)
+
+
 Note: The dataset is highly imbalanced — approximately 8.5% of the records correspond to diabetic patients.
 
 ### Best Model Performance (Neural Network with SMOTE)
@@ -47,18 +55,11 @@ We also compared classical ML models (Logistic Regression, Random Forest) agains
 - **BMI** and **age** showed moderate separation by class.
 - **Heart disease** and **hypertension** were weak predictors on their own.
 
-### Data
-
-- **Input**: CSV of patient-level medical features
-- **Target**: `diabetes` column (binary label)
-- **Size**: ~25,000 samples
-- **Split**:
-  - 80% training (with SMOTE applied)
-  - 20% validation (untouched)
-
 ---
 
 #### Preprocessing / Cleanup
+
+The data was split into training and validation sets ising an 80/20 stratified split to preserve the original class distribution. Only the training set was resampled using SMOTE to correct the imbalance before training the neural networks.
 
 - Dropped unnecessary columns
 - One-hot encoding of categorical variables
