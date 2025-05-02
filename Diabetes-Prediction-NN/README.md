@@ -121,10 +121,19 @@ The following charts help visualize performance differences across models and be
 ![ROC Curve](ROC_curve_comparison.png)
 
 **Precision-Recall Curve (Neural Network After SMOTE)**
-![Precision-Recall Curve](precision-recall curve.png)
+![precision-recall curve](https://github.com/user-attachments/assets/92603a6a-1543-40d7-8c8f-f430a3293609)
+
 
 **Confusion Matrices (Before vs After SMOTE)**
 ![Confusion Matrix](confusion_matrix.png)
+
+### Model Selection Justification
+
+After evaluating all models, we selected the neural network trained on SMOTE-balanced data as our final model. Although this model had a lower precision (47%), it achieved the highest recall (90%) — a critical consideration when predicting medical conditions such as diabetes.
+
+Missing a diabetic patient (false negative) could delay diagnosis and treatment, which is more serious than a false positive. Therefore, we prioritized recall in our model selection.
+
+This decision reflects the assumption that, in a clinical context, it's better to recommend further screening than to miss a potential diagnosis.
 
 ---
 
