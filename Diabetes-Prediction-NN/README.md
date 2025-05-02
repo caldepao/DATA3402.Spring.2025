@@ -49,11 +49,17 @@ This is **exploratory data analysis (EDA)** aimed at:
   
 ### Feature Distributions by Diabetes Status
 
+The following plots illustrate how the distributions of key clinical features vary between diabetic (1) and non-diabetic (0) individuals, helping us visually assess patterns and class imbalance in the raw dataset.      (distribution plots (histograms + KDE curves) for several features, split by diabetes status)
+
 ![HbA1c_level](https://github.com/user-attachments/assets/7dba7837-c5fd-43e7-9ccf-96d86dd58a5a)
 
-![glucoselevel](https://github.com/user-attachments/assets/b8c3b6f0-5fdd-4448-a5c3-d6ac08711b8f)
+![glucoselevel](https://github.com/user-attachments/assets/d18fdaff-3cca-40a3-a2f6-4b2a519cb7ca)
 
-The following plots illustrate how the distributions of key clinical features vary between diabetic (1) and non-diabetic (0) individuals, helping us visually assess patterns and class imbalance in the raw dataset.
+![age](https://github.com/user-attachments/assets/4e949d40-2e77-4dbc-98fb-9cb1018deca8)
+
+- HbA1c Level & Blood Glucose Level: Both metrics show a strong separation between diabetic and non-diabetic individuals — diabetic cases tend to have consistently higher HbA1c and blood glucose values.
+
+- Age: Diabetic cases increase noticeably in patients aged 50 and above, with a significant density peak in those aged 60+.
 
 ---
 
