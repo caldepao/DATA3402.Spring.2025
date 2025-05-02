@@ -27,14 +27,6 @@ The dataset consists of approximately 25,000 patient records and includes 8 inpu
 | `blood_glucose_level`  | Measured blood glucose level (numeric)  |
 | `diabetes`             | Target label (0 = non-diabetic, 1 = diabetic) |
 
-
-Below is a visualization showing the distribution of the target variable and key features, which highlights the class imbalance (~8.5% diabetic cases) and some early trends in predictors:
-
-![HbA1c_level](https://github.com/user-attachments/assets/7dba7837-c5fd-43e7-9ccf-96d86dd58a5a)
-
-![glucoselevel](https://github.com/user-attachments/assets/b8c3b6f0-5fdd-4448-a5c3-d6ac08711b8f)
-
-
 Note: The dataset is highly imbalanced — approximately 8.5% of the records correspond to diabetic patients.
 
 ### Best Model Performance (Neural Network with SMOTE)
@@ -49,11 +41,20 @@ We also compared classical ML models (Logistic Regression, Random Forest) agains
 
 ## Summary of Work Done
 
-### Key Features Observed During EDA
+## Exploratory Data Analysis (EDA)
 
-- **HbA1c_level** and **blood_glucose_level** were the strongest predictors of diabetes.
-- **BMI** and **age** showed moderate separation by class.
-- **Heart disease** and **hypertension** were weak predictors on their own.
+This is **exploratory data analysis (EDA)** aimed at:
+- Understanding class imbalance
+- Exploring distribution of key features (e.g., age, BMI, HbA1c)
+- Identifying relationships between predictors and diabetes status
+  
+### Feature Distributions by Diabetes Status
+
+![HbA1c_level](https://github.com/user-attachments/assets/7dba7837-c5fd-43e7-9ccf-96d86dd58a5a)
+
+![glucoselevel](https://github.com/user-attachments/assets/b8c3b6f0-5fdd-4448-a5c3-d6ac08711b8f)
+
+The following plots illustrate how the distributions of key clinical features vary between diabetic (1) and non-diabetic (0) individuals, helping us visually assess patterns and class imbalance in the raw dataset.
 
 ---
 
@@ -66,7 +67,7 @@ The data was split into training and validation sets ising an 80/20 stratified s
 - Scaled numeric features using StandardScaler
 - Applied SMOTE to oversample the minority class (diabetic patients)
   
-- ### Addressing Class Imbalance with SMOTE
+ ### Addressing Class Imbalance with SMOTE
 
 Only ~8.5% of patients were labeled diabetic, which caused the model to under-predict the positive class. We used SMOTE (Synthetic Minority Over-sampling Technique) to rebalance the training data. This improved the model’s **recall** substantially while maintaining strong AUC performance.
 
