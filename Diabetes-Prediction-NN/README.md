@@ -9,18 +9,43 @@ This repository contains a machine learning pipeline that uses a feedforward neu
 
 ## Overview
 
-The task is to predict diabetes status (1 = diabetic, 0 = non-diabetic) based on structured clinical data (e.g., glucose, HbA1c, BMI).  
-We approached this as a binary classification task using a feedforward neural network, and addressed severe class imbalance with SMOTE.  
-Our best model achieved:
-- **Accuracy:** 97.2%
-- **AUC:** 0.9757
-- **PR AUC:** 0.8816
+The objective of this project is to predict diabetes status (`1` = diabetic, `0` = non-diabetic) using structured clinical data such as glucose level, HbA1c, BMI, and other patient information. We approached this as a binary classification task using a feedforward neural network, while also evaluating baseline models like logistic regression and random forest. To address the significant class imbalance in the dataset, we applied the SMOTE (Synthetic Minority Oversampling Technique) algorithm.
+
+### Dataset Summary
+
+The dataset consists of approximately 25,000 patient records and includes 8 input features and 1 binary target variable:
+
+| Feature                | Description                             |
+|------------------------|-----------------------------------------|
+| `gender`               | Categorical (Male, Female, Other)       |
+| `age`                  | Age in years                            |
+| `hypertension`         | 0 = No, 1 = Yes                          |
+| `heart_disease`        | 0 = No, 1 = Yes                          |
+| `smoking_history`      | Categorical (never, current, etc.)      |
+| `bmi`                  | Body Mass Index                         |
+| `HbA1c_level`          | Hemoglobin A1c level                    |
+| `blood_glucose_level`  | Measured blood glucose level (numeric)  |
+| `diabetes`             | Target label (0 = non-diabetic, 1 = diabetic) |
+
+Note: The dataset is highly imbalanced — approximately 8.5% of the records correspond to diabetic patients.
+
+### Best Model Performance (Neural Network with SMOTE)
+
+- **Accuracy:** 97.2%  
+- **AUC (ROC):** 0.9757  
+- **AUC (Precision-Recall):** 0.8816
 
 We also compared classical ML models (Logistic Regression, Random Forest) against the NN.
 
 ---
 
 ## Summary of Work Done
+
+### Key Features Observed During EDA
+
+- **HbA1c_level** and **blood_glucose_level** were the strongest predictors of diabetes.
+- **BMI** and **age** showed moderate separation by class.
+- **Heart disease** and **hypertension** were weak predictors on their own.
 
 ### Data
 
@@ -39,6 +64,10 @@ We also compared classical ML models (Logistic Regression, Random Forest) agains
 - One-hot encoding of categorical variables
 - Scaled numeric features using StandardScaler
 - Applied SMOTE to oversample the minority class (diabetic patients)
+  
+- ### Addressing Class Imbalance with SMOTE
+
+Only ~8.5% of patients were labeled diabetic, which caused the model to under-predict the positive class. We used SMOTE (Synthetic Minority Over-sampling Technique) to rebalance the training data. This improved the model’s **recall** substantially while maintaining strong AUC performance.
 
 ---
 
@@ -84,6 +113,18 @@ We also compared classical ML models (Logistic Regression, Random Forest) agains
 
 - ROC and PR curves were plotted
 - Confusion matrices used to visualize trade-offs
+
+#### Visualizations
+The following charts help visualize performance differences across models and before/after SMOTE.
+
+**ROC Curve Comparison**
+![ROC Curve](ROC_curve_comparison.png)
+
+**Precision-Recall Curve (Neural Network After SMOTE)**
+![Precision-Recall Curve](precision-recall curve.png)
+
+**Confusion Matrices (Before vs After SMOTE)**
+![Confusion Matrix](confusion_matrix.png)
 
 ---
 
