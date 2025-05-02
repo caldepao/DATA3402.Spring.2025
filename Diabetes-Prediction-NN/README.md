@@ -118,14 +118,54 @@ Only ~8.5% of patients were labeled diabetic, which caused the model to under-pr
 The following charts help visualize performance differences across models and before/after SMOTE.
 
 **ROC Curve Comparison**
+
 ![ROC Curve](ROC_curve_comparison.png)
 
+Surprisingly, the ROC curve after applying SMOTE is nearly identical to the original — and the AUC actually decreases slightly (from 0.9776 to 0.9757).
+
+This suggests that our original model was already handling the class imbalance well, likely due to its capacity and regularization.
+
+While SMOTE balanced the training data, it may have introduced borderline examples that slightly lowered the model’s overall confidence in its predictions. Nonetheless, the model remains highly effective, and the minimal difference confirms strong generalization both before and after addressing imbalance.
+
+For applications like healthcare where sensitivity is crucial, SMOTE can still be valuable — even if AUC remains stable — because it improves recall and ensures fair treatment of minority classes.
+
+
 **Precision-Recall Curve (Neural Network After SMOTE)**
+
 ![precision-recall curve](https://github.com/user-attachments/assets/92603a6a-1543-40d7-8c8f-f430a3293609)
+
+The Precision-Recall (PR) curve above evaluates the model’s performance in distinguishing diabetic from non-diabetic cases, especially under class imbalance.
+
+- **Precision** measures how many of the predicted positives are actually positive.
+- **Recall** measures how many actual positives were correctly predicted.
+
+Our neural network achieves high precision at low recall levels and maintains a strong balance as recall increases — indicating that the model makes reliable predictions while still capturing many true diabetic cases.
+
+With a **PR AUC of 0.8816**, the model demonstrates strong performance even in the presence of class imbalance. This supports our choice of using the neural network (after SMOTE) as the final model.
+
+Despite a slightly lower AUC compared to ROC, the PR curve highlights high precision at moderate recall, indicating reliable identification of diabetic cases — a key goal in imbalanced medical datasets.
 
 
 **Confusion Matrices (Before vs After SMOTE)**
+
 ![Confusion Matrix](confusion_matrix.png)
+
+The confusion matrices and classification reports before and after SMOTE reveal the impact of addressing class imbalance.
+
+#### **Before SMOTE:**
+- The model achieved **perfect recall (1.00)** for the majority class (non-diabetic) and **perfect precision (1.00)** for the minority class (diabetic).
+- However, it struggled with **recall for diabetic cases (0.67)** — meaning 33% of diabetics were missed.
+- This is a common outcome in imbalanced datasets where models favor the majority class.
+
+#### **After SMOTE:**
+- SMOTE improved the **recall for diabetic cases to 0.89**, significantly reducing false negatives (from 562 → 189).
+- However, this came at the cost of **lower precision (0.48)** — increasing false positives.
+- The **F1-score for diabetics** dropped slightly (from 0.80 → 0.62), reflecting the trade-off between precision and recall.
+
+---
+
+These results emphasize the **importance of aligning model choice with application needs**. If minimizing false negatives is the goal (e.g., screening for diabetes in a healthcare setting), SMOTE helps the model identify more true positives. But if false positives carry a high cost, the original unsampled model may be more appropriate.
+
 
 ### Model Selection Justification
 
