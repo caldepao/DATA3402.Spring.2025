@@ -10,6 +10,14 @@ This repository contains a machine learning pipeline that uses a feedforward neu
 
 The objective of this project is to predict diabetes status (`1` = diabetic, `0` = non-diabetic) using structured clinical data such as glucose level, HbA1c, BMI, and other patient information. We approached this as a binary classification task using a feedforward neural network, while also evaluating baseline models like logistic regression and random forest. To address the significant class imbalance in the dataset, we applied the SMOTE (Synthetic Minority Oversampling Technique) algorithm.
 
+### FInal Result Summary (Neural Network with SMOTE)
+
+- **Accuracy:** 97.2%  
+- **AUC (ROC):** 0.9757  
+- **AUC (Precision-Recall):** 0.8816
+
+We also compared classical ML models (Logistic Regression, Random Forest) against the NN.
+
 ### Dataset Summary
 
 The dataset consists of approximately 25,000 patient records and includes 8 input features and 1 binary target variable:
@@ -28,19 +36,11 @@ The dataset consists of approximately 25,000 patient records and includes 8 inpu
 
 Note: The dataset is highly imbalanced — approximately 8.5% of the records correspond to diabetic patients.
 
-### Best Model Performance (Neural Network with SMOTE)
-
-- **Accuracy:** 97.2%  
-- **AUC (ROC):** 0.9757  
-- **AUC (Precision-Recall):** 0.8816
-
-We also compared classical ML models (Logistic Regression, Random Forest) against the NN.
-
 ---
 
 ## Summary of Work Done
 
-## Exploratory Data Analysis (EDA)
+## Data Visualization & Exploratory Data Analysis (EDA)
 
 This is **exploratory data analysis (EDA)** aimed at:
 - Understanding class imbalance
@@ -61,6 +61,10 @@ The following plots illustrate how the distributions of key clinical features va
 
 - Age: Diabetic cases increase noticeably in patients aged 50 and above, with a significant density peak in those aged 60+.
 
+Takeaways: 
+- Class imbalance confirmed (~8.5% diabetic)
+- Key predictors: HbA1c level, blood glucose level,age
+
 ---
 
 #### Preprocessing / Cleanup
@@ -75,14 +79,6 @@ The data was split into training and validation sets ising an 80/20 stratified s
  ### Addressing Class Imbalance with SMOTE
 
 Only ~8.5% of patients were labeled diabetic, which caused the model to under-predict the positive class. We used SMOTE (Synthetic Minority Over-sampling Technique) to rebalance the training data. This improved the model’s **recall** substantially while maintaining strong AUC performance.
-
----
-
-#### Data Visualization
-
-- Histograms for key features by diabetes status
-- Class imbalance confirmed (~8.5% diabetic)
-- Key predictors: HbA1c level, blood glucose level
 
 ---
 
